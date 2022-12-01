@@ -1,0 +1,110 @@
+a {
+    text-decoration: none;
+}
+
+.container{
+    max-width: 1024px;
+    margin: auto;
+}
+
+.nav-brand{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.d-flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.border-shadow{
+    border: 1px solid;
+    box-shadow: 1px;
+}
+
+.text-dark{
+    color: rgb(22, 20, 20);
+}
+
+.inline{
+    display: inline-block;
+}
+
+#header nav{
+    padding: 1em 0;
+    width: 100%;
+}
+
+#site-main{
+    margin-top: 6em;
+}
+
+#site-main .container .box-nav > a{
+    font-size: 1em;
+    padding: .5em 1em;
+}
+
+#site-main .container form{
+    margin: 2em 0;
+}
+
+table{
+    border-spacing: 0px;
+    width: 100%;
+}
+
+.table td, .table th{
+    padding: .75em;
+    vertical-align: top;
+    text-align: center;
+    border-top: 1px solid;
+}
+
+.table td > a.btn{
+    padding: .3em 1em;
+    margin: 0.2em;
+}
+
+.form-title{
+    margin: 2em;
+}
+
+.form-title > h2{
+    padding: .5em 0;
+}
+
+.new_user{
+    max-width: 786px;
+    margin: auto;
+}
+
+#update_user .form-group,
+#add_user .form-group{
+    margin: .4em 0;
+}
+
+#update_user .form-group input[type="text"],
+#add_user .form-group input[type="text"]{
+    width: 100%;
+    padding: .6em 1em;
+    margin: .5em 0;
+    border: 1px solid;
+    font-size: 1em;
+    border-radius: .2em;
+}
+
+#update_user .form-group .btn,
+#add_user .form-group .btn {
+    width: 50%;
+    padding: .9em 1em;
+    border-radius: .2em;
+    margin: .5em 0;
+}
