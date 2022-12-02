@@ -1,16 +1,17 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 var schema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: true
-    },
-    rollNo: {
-        type: String,
-        required: true
-    }
-})
+  name: {
+    type: String,
+    required: true,
+  },
+  rollNo: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+});
 
-const Userdb = mongoose.model('userdb', schema);
+const Userdb = mongoose.model("userdb", schema);
 
-module.exports = Userdb
+module.exports = Userdb;

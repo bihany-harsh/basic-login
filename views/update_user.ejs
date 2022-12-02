@@ -1,43 +1,46 @@
-<!-- Include header -->
-<%-include('include/_header') %>
-<!-- /Include header -->
 
-<!-- Main site -->
-<main id="site-main">
-  <div class="container">
-    <div class="box-nav d-flex justify-between">
-      <div class="filter">
-        <a href="/"><i class="fas fa-angle-double-left"></i>List</a>
-      </div>
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/"><i class="fas fa-angle-double-left"></i> All Users</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">Update User</h2>
+            <span class="text-light">Make changes</span>
+        </div>
+
+        <!-- add user form -->
+         <!-- form handling -->
+ <form method="POST" id="update_user">
+    <div class="new_user">
+        <div class="form-group">
+            <label for="name" class="text-light">Name</label>
+            <input type="hidden" name="id" value="<%= user._id %>">
+            <input type="text" name="name" value="<%= user.name %>" placeholder="Mark Stoenis">
+        </div>
+        <div class="form-group">
+            <label for="rollNo" class="text-light">Roll Number</label>
+            <input type="text" name="rollNo" value="<%= user.rollNo%>" placeholder="123456">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn text-dark update">Save</button>
+        </div>
+
     </div>
-    <div class="form-title text-center">
-      <h2 class="text-dark">Update user</h2>
-      <span class="text-light">Make changes</span>
+</form>
+       
     </div>
-    <!-- Form -->
-    <!-- Form handling -->
-    <form method="POST" id="update_user">
-      <div class="new_user">
-        <div class="form-group">
-          <label for="name" class="text-light">Username</label>
-          <input type="hidden" name="id" value="" />
-          <input type="text" name="name" value="" placeholder="John Doe" />
-        </div>
-        <div class="form-group">
-          <label for="rollNo" class="text-light">Roll Number</label>
-          <input type="hidden" name="id" value="" />
-          <input type="text" name="rollNo" value="" placeholder="123456" />
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn text-dark update">Add</button>
-        </div>
-      </div>
-    </form>
-    <!-- /Form handling -->
-  </div>
 </main>
-<!-- /Main site -->
+<!-- /Main Site -->
 
-<!-- Include footer -->
-<%-include('include/_footer') %>
-<!-- /Include footer -->
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

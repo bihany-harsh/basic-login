@@ -1,20 +1,25 @@
 var Userdb = require("../model/model");
 
-// to save new user
+// create and save new user
 exports.create = (req, res) => {
+  // validate request
   if (!req.body) {
-    res.status(400).send({ message: "Content is empty" });
+    res.status(400).send({ message: "Empty 400" });
     return;
   }
+
+  // new user
   const user = new Userdb({
-    username: req.body.username,
+    name: req.body.name,
     rollNo: req.body.rollNo,
   });
+
+  // save user in the database
   user
     .save(user)
     .then((data) => {
-      // res.send(data);
-      res.redirect('/add-user');
+      //res.send(data)
+      res.redirect("/add-user");
     })
     .catch((err) => {
       res.status(500).send({
@@ -23,9 +28,11 @@ exports.create = (req, res) => {
     });
 };
 
+// retrieve and return all users/ retrive and return a single user
 exports.find = (req, res) => {
   if (req.query.id) {
     const id = req.query.id;
+
     Userdb.findById(id)
       .then((data) => {
         if (!data) {
@@ -43,46 +50,54 @@ exports.find = (req, res) => {
         res.send(user);
       })
       .catch((err) => {
-        res.send(500).send({ message: err.message || "Error 500" });
+        res.status(500).send({ message: err.message || "Error 500" });
       });
   }
 };
 
+// Update a new idetified user by user id
 exports.update = (req, res) => {
   if (!req.body) {
-    return res.status(400).send({ message: "Error, check again" });
+    return res.status(400).send({ message: "Data to update can not be empty" });
   }
 
   const id = req.params.id;
-  Userdb.findByIdAndUpdate(id, req.body, { useFindandModify: false })
+  Userdb.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
-        res.status(404).send({ message: "Error 404" });
+        res
+          .status(404)
+          .send({
+            message: `Cannot Update user with ${id}. Maybe user not found!`,
+          });
       } else {
         res.send(data);
       }
     })
     .catch((err) => {
-      res.status(500).send({ message: "Error 500" });
+      res.status(500).send({ message: "Error Update user information" });
     });
 };
 
+// Delete a user with specified user id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
   Userdb.findByIdAndDelete(id)
     .then((data) => {
       if (!data) {
-        res.status(404).send({ message: "Error 404" });
+        res
+          .status(404)
+          .send({ message: `Cannot Delete with id ${id}. Maybe id is wrong` });
       } else {
         res.send({
-          message: "Done!",
+          message: "User was deleted successfully!",
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error 500",
+        message: "Could not delete User with id=" + id,
       });
     });
 };
